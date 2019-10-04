@@ -56,6 +56,9 @@
 		/*background-color: #dcb;*/
 		margin: auto;
 	}
+	.garis_bawah{
+		border-bottom: solid 2px;
+	}
 </style>
 <body>
 	<div class="container">
@@ -67,16 +70,19 @@
 					</div>
 					<div class="kop-isi">
 						PEMERINTAH KABUPATEN LOMBOK BARAT<br>
-						K E C A M A T A N  L A B U A P I <br>
+						<!-- K E C A M A T A N  L A B U A P I <br> -->
+						KECAMATAN LABUAPI<br>
 								DESA PERAMPUAN <br>
 						Alamat Jln. Raya Pengsong No.  21  Tlp. 085303700606 Desa Perampuan 
-			      <br> E-Mail :desaperampuan@gmail.com Kode Pos 83361
+			      <br> E-Mail: desaperampuan@gmail.com Kode Pos 83361
 					</div>
 				</div>
 				<div class="surat-badan">
 					<div class="text-center">
-						<b>SURAT KETERANGAN</b> <br>
-						Nomor : 400. // PRM / 2019 <br>
+						<span class="garis_bawah"><b>SURAT KETERANGAN</b></span> <br>
+						<div style="margin-top: 3px;">
+						Nomor : 400. / / PRM / 2019 <br>
+						</div>
 					</div>
 					<div class="text-justify">
 						<p>&emsp;&emsp;&emsp;Yang bertandatangan dibawah ini Kepala Desa Perampuan, Kecamatan Labuapi, Kabupaten Lombok Barat, menerangkan dengan sebenarnya bahwa:</p>
@@ -112,7 +118,7 @@
 								</tr>
 							</table>
 						</div>	
-						<p>&emsp;&emsp;&emsp;Yang namanya tersebut diatas memang benar penduduk yang berdomisili dan bertempat tinggal di wilayah kami Desa Perampuan, Kecamatan Labuapi, Kabupaten Lombok Barat. Sepanjang pengetahuan dan pengecekan kami serta menurut keterangan yang bersangkutan bahwa, yang bersangkutan memang benar sampai saat ini, Belum Menikah.</p>
+						<p>&emsp;&emsp;&emsp;Yang namanya tersebut diatas memang benar penduduk yang berdomisili dan bertempat tinggal di wilayah kami Desa Perampuan, Kecamatan Labuapi, Kabupaten Lombok Barat. Sepanjang pengetahuan dan pengecekan kami serta menurut keterangan yang bersangkutan bahwa, yang bersangkutan memang benar sampai saat ini, <strong><i>Belum Menikah</i></strong>.</p>
 						<p>&emsp;&emsp;&emsp;Demikian surat keterangan ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya.</p>
 					</div>
 					<br><br> <br><br><br>
