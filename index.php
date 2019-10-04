@@ -8,10 +8,10 @@
 		/*background-color: #ffe;*/
 		background-color: grey;
 	}
-	.container {
+	/*.container {
 		  margin: 0 auto;
   			width: 50%;
-		}
+		}*/
 	.surat{
 		width: 20.9cm;
 		height: 29.6cm;
