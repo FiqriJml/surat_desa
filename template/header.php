@@ -61,10 +61,7 @@
                         </div>
                     </li>
                     <li class="active">
-                        <a href="../desa"><i class="fa fa-home"></i> <span class="nav-label">Home</span></a>
-                    </li>
-                    <li>
-                        <a href="../desa/form.php"><i class="fa fa-book"></i> <span class="nav-label">Form Data Desa</span></a>
+                        <a href="../desa"><i class="fa fa-home"></i> <span class="nav-label">Data Desa</span></a>
                     </li>
                     <li>
                         <a href="../penduduk"><i class="fa fa-book"></i> <span class="nav-label">Data Penduduk</span></a>

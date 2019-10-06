@@ -22,6 +22,7 @@ while ($excel->getActiveSheet()->getCell('A'.$i)->getValue() != "") { //selagi a
 	$data[$n]['nama'] = $excel->getActiveSheet()->getCell($hrf++.$i)->getValue();
 	$data[$n]['jenis_kelamin'] = $excel->getActiveSheet()->getCell($hrf++.$i)->getValue();
 	$data[$n]['ttl'] = $excel->getActiveSheet()->getCell($hrf++.$i)->getValue();
+	$data[$n]['umur'] = $excel->getActiveSheet()->getCell($hrf++.$i)->getValue();
 	$data[$n]['alamat'] = $excel->getActiveSheet()->getCell($hrf++.$i)->getValue();
 	$data[$n]['rt_rw'] = $excel->getActiveSheet()->getCell($hrf++.$i)->getValue();
 	$data[$n]['dusun'] = $excel->getActiveSheet()->getCell($hrf++.$i)->getValue();
@@ -67,12 +68,31 @@ while ($excel->getActiveSheet()->getCell('A'.$i)->getValue() != "") { //selagi a
 		padding-left: 10px;
 		padding-right: 10px;	
 	}
+	.cari-data{
+		/*padding-bottom: 0px;*/
+	}
 </style>
 	<div id="app">
-		<div class="box-putih border-bottom text-center">
-			<h2 class="label-primary"><strong>Data Penduduk</strong></h2>
+		<div class="box-putih border-bottom">
+			<h2 class="label-primary text-center"><strong>Data Penduduk</strong></h2>
 			<div class="row">
 				<div class="col-md-12">
+					<div class="cari-data pull-left">
+						<select id="cari-kolom" v-model="search_kolom">
+							<option value="no_kk">No KK</option>
+							<option value="nama">Nama</option>
+							<option value="jenis_kelamin">Jenis Kelamin</option>
+							<option value="umur">Umur</option>
+							<option value="golongan_darah">Golongan Darah</option>
+							<option value="pekerjaan">Pekerjaan</option>
+							<option value="status_perkawinan">Status Perkawinan</option>
+							<option value="agama">Agama</option>
+						</select>
+						<input id="cari-input" type="text" name="cari-input" placeholder="Cari..." v-model="search">
+					</div>
+					<div class="tombol-crud">
+						<a href="form.php" class="btn btn-primary pull-right">Upload Data</a>
+					</div>
 					<table class="table table-bordered">
 						<thead>
 							<tr>
@@ -81,6 +101,7 @@ while ($excel->getActiveSheet()->getCell('A'.$i)->getValue() != "") { //selagi a
 								<th>Nama</th>
 								<th>Jenis Kelamin</th>
 								<th>Tempat, Tgl Lahir</th>
+								<th>Umur</th>
 								<th>Alamat</th>
 								<!-- <th>RT/RW</th>
 								<th>Dusun</th>
@@ -98,12 +119,13 @@ while ($excel->getActiveSheet()->getCell('A'.$i)->getValue() != "") { //selagi a
 							</tr>
 						</thead>
 						<tbody>
-							<tr v-for="data in data_penduduk">
+							<tr v-for="data in filteredData_penduduk">
 								<td>{{data.nik}}</td>
 								<td>{{data.no_kk}}</td>
 								<td>{{data.nama}}</td>
 								<td>{{data.jenis_kelamin}}</td>
 								<td>{{data.ttl}}</td>
+								<td>{{data.umur}}</td>
 								<td>{{data.alamat}}</td>
 								<!-- <td>{{data.rt_rw}}</td>
 								<td>{{data.dusun}}</td>
@@ -160,7 +182,9 @@ while ($excel->getActiveSheet()->getCell('A'.$i)->getValue() != "") { //selagi a
 	var vm = new Vue({
 	  el: '#app',
 	  data: {
-	  	data_penduduk: data
+	  	data_penduduk: data,
+	  	search: '',
+	  	search_kolom: 'no_kk',
 	  },
 	  methods: {
 	  	hari_ini: function() {
@@ -171,6 +195,13 @@ while ($excel->getActiveSheet()->getCell('A'.$i)->getValue() != "") { //selagi a
 	  		return date.getDate() +' '+ mL[date.getMonth()] +' '+ date.getFullYear();
 	  	},
 	  },
+	  computed: {
+	  	filteredData_penduduk: function(){
+	  		return this.data_penduduk.filter((data) => {
+	  			return data[this.search_kolom].toString().toLowerCase().match(this.search.toString().toLowerCase());
+	  		});
+	  	}
+	  }
 	});
 </script>
 </body>
