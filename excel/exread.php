@@ -30,4 +30,6 @@ while ($excel->getActiveSheet()->getCell('A'.$i)->getValue() != "") { //selagi a
 echo "</table>";
 
 ?>
+<?php 
+	include '../template/footer.php';
 	

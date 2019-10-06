@@ -173,7 +173,3 @@
         ga('send', 'pageview');
 
     </script>
-</body>
-
-<!-- Mirrored from webapplayers.com/inspinia_admin-v2.7.1/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 04 Oct 2017 15:22:46 GMT -->
-</html>

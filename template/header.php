@@ -33,6 +33,8 @@
     <link href="../assets/css/animate.css" rel="stylesheet">
     <link href="../assets/css/style.css" rel="stylesheet">
 
+    <!-- VueJs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
 </head>
 
 <style type="text/css">
@@ -62,16 +64,16 @@
                         <a href="../desa"><i class="fa fa-home"></i> <span class="nav-label">Home</span></a>
                     </li>
                     <li>
-                        <a href="../excel/exread.php"><i class="fa fa-book"></i> <span class="nav-label">Excel</span></a>
-                    </li>
-                    <li>
-                        <a href="../surat/surat.php"><i class="fa fa-book"></i> <span class="nav-label">Surat</span></a>
-                    </li>
-                    <li>
                         <a href="../desa/form.php"><i class="fa fa-book"></i> <span class="nav-label">Form Data Desa</span></a>
                     </li>
                     <li>
-                        <a href="../penduduk/form.php"><i class="fa fa-book"></i> <span class="nav-label">Form Data Penduduk</span></a>
+                        <a href="../penduduk"><i class="fa fa-book"></i> <span class="nav-label">Data Penduduk</span></a>
+                    </li>
+                    <li class="">
+                        <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Surat</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level collapse" style="height: 0px;">
+                            <li><a href="../surat/surat_keterangan_belum_menikah_form.php">Surat Keterangan Belum Menikah</a></li>
+                        </ul>
                     </li>
                     
                 </ul>
