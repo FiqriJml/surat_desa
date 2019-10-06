@@ -2,9 +2,28 @@
 	include '../template/header.php';
 
 require_once '../assets/Classes/PHPExcel.php'; // Memanggil library PhpExcel
-// load file excel
-$excel = PHPExcel_IOFactory::load('../excel/data.xlsx');
+if (isset($_POST["import"]))
+{
 
+  $allowedFileType = ['application/vnd.ms-excel','text/xls','text/xlsx','application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'];
+  if(in_array($_FILES["file"]["type"],$allowedFileType)){
+
+        $targetPath = '../assets/uploads/'.$_FILES['file']['name'];
+        move_uploaded_file($_FILES['file']['tmp_name'], $targetPath);
+
+         // load file excel
+		$excel = PHPExcel_IOFactory::load($targetPath);
+  }
+  else
+  { 
+        $type = "error";
+        $message = "Invalid File Type. Upload Excel File.";
+  }
+}
+else{
+// load file excel
+$excel = PHPExcel_IOFactory::load('../excel/data_kosong.xlsx');
+}
 // Menjalankan atau mengaktifkan lembar kerja excel
 $excel->setActiveSheetIndex(0);
 
@@ -50,7 +69,6 @@ while ($excel->getActiveSheet()->getCell('A'.$i)->getValue() != "") { //selagi a
 	// echo json_encode($data);
 	// echo sizeof($data);
 	// echo $data[2]['nik'];
-
 ?>
 <style type="text/css">
 	.box-putih{
@@ -76,7 +94,19 @@ while ($excel->getActiveSheet()->getCell('A'.$i)->getValue() != "") { //selagi a
 		<div class="box-putih border-bottom">
 			<h2 class="label-primary text-center"><strong>Data Penduduk</strong></h2>
 			<div class="row">
+
 				<div class="col-md-12">
+					<div class="outer-container">
+        <form action="" method="post" name="frmExcelImport" id="frmExcelImport" enctype="multipart/form-data">
+            <div>
+                <label>Upload File </label> <input type="file" name="file" id="file" accept=".xls,.xlsx">
+                <button type="submit" id="submit" name="import" class="btn-submit">Import</button>
+            </div>
+        </form>
+        <br>
+        
+    </div>
+    <div id="response" class="<?php if(!empty($type)) { echo $type . " display-block"; } ?>"><?php if(!empty($message)) { echo $message; } ?></div>
 					<div class="cari-data pull-left">
 						<select id="cari-kolom" v-model="search_kolom">
 							<option value="no_kk">No KK</option>
@@ -90,9 +120,9 @@ while ($excel->getActiveSheet()->getCell('A'.$i)->getValue() != "") { //selagi a
 						</select>
 						<input id="cari-input" type="text" name="cari-input" placeholder="Cari..." v-model="search">
 					</div>
-					<div class="tombol-crud">
-						<a href="form.php" class="btn btn-primary pull-right">Upload Data</a>
-					</div>
+					<!-- <div class="tombol-crud">
+						<a href="form_upload.php" class="btn btn-primary pull-right">Upload Data</a>
+					</div> -->
 					<table class="table table-bordered">
 						<thead>
 							<tr>
