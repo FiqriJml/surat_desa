@@ -70,6 +70,7 @@
                         <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">Surat</span><span class="fa arrow"></span></a>
                         <ul class="nav nav-second-level collapse" style="height: 0px;">
                             <li><a href="../surat/surat_keterangan_belum_menikah_form.php">Surat Keterangan Belum Menikah</a></li>
+                            <li><a href="../surat/keterangan_penghasilan_form.php">Surat Keterangan Penghasilan</a></li>
                         </ul>
                     </li>
                     

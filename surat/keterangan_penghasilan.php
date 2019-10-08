@@ -8,12 +8,16 @@ $nomer_surat = $_GET['nomer_surat'];
 $nama = $_GET['nama'];
 $tempat_lahir = $_GET['tempat_lahir'];
 $tgl_lahir = $_GET['tgl_lahir'];
+$nik = $_GET['nik'];
 $jenis_kelamin = $_GET['jenis_kelamin'];
 $warganegara = $_GET['warganegara'];
 $goldar = $_GET['goldar'];
 $agama = $_GET['agama'];
 $status_perkawinan = $_GET['status_perkawinan'];
 $pekerjaan = $_GET['pekerjaan'];
+$penghasilan = $_GET['penghasilan'];
+$penghasilan_terbilang = $_GET['penghasilan_terbilang'];
+$nama_desa = $_GET['nama_desa'];
 $alamat = $_GET['alamat'];
 
 $yang_ttd = $_GET['yang_ttd'];
@@ -29,6 +33,7 @@ ob_start();
 
 <style type="text/css">
     .surat{
+        font-family: "Times New Roman", Times, serif;
         // width: 20.9cm;
         // height: 29.6cm;
         /*background-color: pink;*/
@@ -58,11 +63,19 @@ ob_start();
     }
     .kop-logo{
         float: left;
-        width: 80px;
+        width: 70px;
     }
     .kop-isi{
         text-align: center;
+        font-size: 14px;
+    }
+    .kop-isi .desa{
+        font-size: 22px;
         font-weight: bold;
+    }
+    .kop-isi .alamat{
+        font-size: 11px;
+        font-style: italic;
     }
     .clearfix {
       overflow: auto;
@@ -76,9 +89,11 @@ ob_start();
     .text-top{
         vertical-align: top;
     }
+
+    /*TABEL PADDING*/
     .tabel{
-        padding-left: 2.5cm;
-        padding-right: 2cm;
+        padding-left: 1.2cm;
+        padding-right: 1.2cm;
     }
     .tabel .label-td{
         width: 3.6cm;
@@ -88,6 +103,7 @@ ob_start();
     }
     .garis_bawah{
         border-bottom: solid 2px;
+        font-size: 16px;
     }
     .form-surat{
         background-color: #fff;
@@ -100,9 +116,6 @@ ob_start();
         padding: 12px;
 
     }
-    .kop-isi .desa{
-        font-size: 22px;
-    }
 </style>
         <div class="surat">
             <div class="surat-isi">
@@ -114,43 +127,36 @@ ob_start();
                     <span>PEMERINTAH KABUPATEN LOMBOK BARAT<br>
                         <!-- K E C A M A T A N  L A B U A P I <br> -->
                         KECAMATAN LABUAPI</span><br>
-                                <span class="desa">DESA PERAMPUAN</span> <br>
-                        Alamat Jln. Raya Pengsong No.  21  Tlp. 085303700606 Desa Perampuan 
-                  <br> E-Mail: desaperampuan@gmail.com Kode Pos 83361
+                                <span class="desa">DESA <?= strtoupper($nama_desa) ?></span> <br>
+                        <span class="alamat">Jl.TGH.M.Shaleh Hambali No: 10.Phone: 087864373918 Kode Pos  :83361</span>
                     </div>
                 </div>
                 <div class="surat-badan">
                     <div class="text-center">
-                        <span class="garis_bawah"><b>SURAT KETERANGAN</b></span> <br>
+                        <span class="garis_bawah"><b>SURAT KETERANGAN PENGHASILAN</b></span> <br>
                         <div style="margin-top: 3px;">
-                        Nomor : <?= $nomer_surat; ?>. /&emsp;&emsp;/ PRM / 2019 <br>
+                        Nomor : <?= $nomer_surat; ?> / 242 / X / 2019 <br> 
                         </div>
                     </div>
                     <br>
                     <div class="text-justify">
-                        <p>&emsp;&emsp;&emsp;Yang bertandatangan dibawah ini Kepala Desa Perampuan, Kecamatan Labuapi, Kabupaten Lombok Barat, menerangkan dengan sebenarnya bahwa:</p>
+                        <p>&emsp;&emsp;&emsp;Yang bertanda tangan dibawah ini Kepala Desa Bengkel, Kecamatan Labuapi, Kabupaten Lombok Barat, Menerangkan:</p>
                         <div class="tabel">
                             <table border="0">
                                 <tr>
-                                    <td class="label-td">Nama</td> <td>:&emsp;</td> <td> <b><?= $nama; ?></b></td>
+                                    <td class="label-td">Nama</td> <td>:&emsp;</td> <td><?= $nama; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Tempat/tgl. lahir</td> <td>:</td> <td><?= $tempat_lahir; ?>, <?= $tgl_lahir; ?></td>
                                 </tr>
                                 <tr>
+                                    <td>NIK</td> <td>:</td> <td><?= $nik; ?></td>
+                                </tr>
+                                <tr>
                                     <td>Jenis kelamin</td> <td>:</td> <td><?= $jenis_kelamin; ?></td>
                                 </tr>
                                 <tr>
-                                    <td>Warganegara</td> <td>:</td> <td><?= $warganegara; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Golongan darah</td> <td>:</td> <td><?= $goldar; ?></td>
-                                </tr>
-                                <tr>
                                     <td>Agama</td> <td>:</td> <td><?= $agama; ?></td>
-                                </tr>
-                                <tr>
-                                    <td>Status Perkawinan</td> <td>:</td> <td><?= $status_perkawinan; ?></td>
                                 </tr>
                                 <tr>
                                     <td>Pekerjaan</td> <td>:</td> <td><?= $pekerjaan; ?></td>
@@ -162,18 +168,21 @@ ob_start();
                             </table>
                         </div>  
                         <br>
-                        <p>&emsp;&emsp;&emsp;Yang namanya tersebut diatas memang benar penduduk yang berdomisili dan bertempat tinggal di wilayah kami Desa Perampuan, Kecamatan Labuapi, Kabupaten Lombok Barat. Sepanjang pengetahuan dan pengecekan kami serta menurut keterangan yang bersangkutan bahwa, yang bersangkutan memang benar sampai saat ini, <strong><i>Belum Menikah</i></strong>.</p>
-                        <p>&emsp;&emsp;&emsp;Demikian surat keterangan ini kami buat dengan sebenarnya untuk dapat dipergunakan sebagaimana mestinya.</p>
+                        <p>&emsp;&emsp;&emsp;Bahwa yang namanya tersebut di atas memang benar penduduk yang berdomisili di wilayah Dusun Bengkel Selatan Rt 01, Desa Bengkel, Kecamatan Labuapi, Kabupaten Lombok Barat. dan menurut yang bersangkutan memang benar saat ini 
+
+                        <u>mempunyai penghasilan  sebesar  Rp. <?= $penghasilan ?> ( <?= $penghasilan_terbilang ?> ).</u>
+
+                        <p>&emsp;&emsp;&emsp;Demikian surat keterangan ini dibuat dengan sebenarnya agar dapat dipergunakan sebagaimana mestinya.</p>
                     </div>
                     <br><br> <br><br>
                     <div class="surat-ttd">
-                        Perampuan, <?= $hari_ini ?><br>
-                        Kepala Desa Perampuan <br> <br><br><br> <br> <br> <br>
+                        <?= $nama_desa ?>, <?= $hari_ini ?><br>
+                        Kepala Desa <?= $nama_desa ?> <br> <br><br><br> <br> <br> <br>
 
 
 
                             <div class="text-center">
-                            <b>(    <?= $yang_ttd; ?>    )</b></div>
+                            <b><u>( <?= $yang_ttd; ?> )</u></b></div>
                     </div>
                 </div>
             </div>
